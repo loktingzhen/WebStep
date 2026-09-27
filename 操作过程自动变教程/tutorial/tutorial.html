@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebStep</title>
+    <link rel="stylesheet" href="tutorial.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <h1>WebStep</h1>
+        <p id="summary">正在读取录制结果...</p>
+      </div>
+      <div class="header-actions">
+        <button id="exportPdfBtn" class="secondary-button" type="button">导出 PDF</button>
+        <span id="saveStatus" class="save-status">自动保存</span>
+      </div>
+    </header>
+
+    <main class="steps">
+      <section class="print-brand" aria-hidden="true">
+        <span class="print-brand-name">WebStep</span>
+      </section>
+      <section id="sourceInfo" class="source-card" hidden></section>
+      <div id="steps"></div>
+      <section class="add-step-panel">
+        <button id="addStepBtn" class="add-step-button" type="button">
+          <span class="add-step-icon">+</span>
+          <span>添加步骤</span>
+        </button>
+      </section>
+    </main>
+
+    <input id="imageInput" class="hidden-file-input" type="file" accept="image/png,image/jpeg,image/jpg,image/webp" />
+
+    <div id="toast" class="toast" hidden></div>
+
+    <div id="editorModal" class="modal" hidden>
+      <div class="modal-backdrop" data-close-editor></div>
+      <section class="modal-panel" role="dialog" aria-modal="true" aria-label="截图编辑器">
+        <header class="modal-header">
+          <div>
+            <h2>编辑截图</h2>
+          </div>
+          <button id="closeEditorBtn" class="icon-button" type="button" aria-label="关闭">×</button>
+        </header>
+
+        <div class="editor-toolbar">
+          <button id="addMarkerBtn" class="tool-icon-button" type="button" title="添加红框" aria-label="添加红框">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v14H5z" /><path d="M9 3H5a2 2 0 0 0-2 2v4" /><path d="M15 21h4a2 2 0 0 0 2-2v-4" /></svg>
+          </button>
+          <button id="addBlurBtn" class="tool-icon-button" type="button" title="添加模糊" aria-label="添加模糊">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 8.5a4.5 4.5 0 0 1 9 0c0 5-4.5 8-4.5 8s-4.5-3-4.5-8Z" /><path d="M7 19h10" /><path d="M9 22h6" /></svg>
+          </button>
+          <button id="restoreMarkerBtn" class="tool-icon-button" type="button" title="恢复自动识别位置" aria-label="恢复自动识别位置">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4" /><path d="M12 17v4" /><path d="M3 12h4" /><path d="M17 12h4" /><circle cx="12" cy="12" r="4" /></svg>
+          </button>
+          <button id="deleteSelectedBtn" class="tool-icon-button danger" type="button" title="删除所选标注" aria-label="删除所选标注">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16" /><path d="M10 11v6" /><path d="M14 11v6" /><path d="M6 7l1 14h10l1-14" /><path d="M9 7V4h6v3" /></svg>
+          </button>
+          <div class="toolbar-spacer"></div>
+          <button id="cancelEditorBtn" class="secondary-button" type="button">取消</button>
+          <button id="saveEditorBtn" class="primary-button" type="button">保存</button>
+        </div>
+
+        <div class="editor-canvas-wrap">
+          <div id="editorCanvas" class="editor-canvas"></div>
+        </div>
+      </section>
+    </div>
+
+    <script src="tutorial.js"></script>
+  </body>
+</html>
